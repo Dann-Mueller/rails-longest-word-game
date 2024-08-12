@@ -1,0 +1,14 @@
+<h1>Your result</h1>
+<p>Your word: <%= @word %></p>
+
+<% if @included && @valid %>
+  <p>Congratulations! <%= @word %> is a valid English word!</p>
+<% elsif !@included %>
+  <p>Sorry, but <%= @word %> can't be built out of <%= @letters.join(', ') %></p>
+<% else %>
+  <p>Sorry, but <%= @word %> is not a valid English word.</p>
+<% end %>
+
+<%= link_to "Try again", new_path, class: "btn btn-primary" %>
+
+<p>Total score: <%= @total_score %></p>

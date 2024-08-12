@@ -1,0 +1,15 @@
+<h1>New Game</h1>
+<p>Here is your random grid:</p>
+<ul>
+  <% @letters.each do |letter| %>
+    <li><%= letter %></li>
+  <% end %>
+</ul>
+
+<%= form_with url: score_path, method: :post, local: true do |form| %>
+  <%= form.hidden_field :authenticity_token, value: form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters.join(' ') %>
+  <%= form.label :word, "Enter a word" %>
+  <%= form.text_field :word %>
+  <%= form.submit "Play" %>
+<% end %>
